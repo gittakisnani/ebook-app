@@ -9,11 +9,13 @@ import Author from '../components/Author'
 import BooksCat from '../components/BooksCat'
 import Book from '../components/Book'
 import authors from '../data/authors'
+import CATEGORIES from '../config/categories'
 
 
 export default function Home({ isDarkTheme }) {
   const [author, setAuthor] = useState(undefined);
   const [book, setBook] = useState(undefined);
+
   const handleSetAuthor = (payload) => {
     setBook(undefined);
     setAuthor(payload)
@@ -28,6 +30,7 @@ export default function Home({ isDarkTheme }) {
       image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1'
     })
   }
+
   const [colorsClass, setColorsClass] = useState(isDarkTheme ? 'bg-[#0c131b]/95 text-gray-200' : 'bg-gray-100 text-slate-700')
   return (
     <>
@@ -44,151 +47,37 @@ export default function Home({ isDarkTheme }) {
             <Stats isDarkTheme={isDarkTheme} color='#efb817' icon={<BiBookReader />} allNumber={26.669} text={'Book Readers'} plusNumber={1082} />
             <Stats isDarkTheme={isDarkTheme} color='#0b9d6c' icon={<BsShare />} allNumber={20.662} text={'Book Sharer'} plusNumber={1468} />
           </div>
-          <BooksCat isDarkTheme={isDarkTheme} cat='Popular Books'>
+          {CATEGORIES.map((cat, index) => (
+            <BooksCat key={index} isDarkTheme={isDarkTheme} cat={cat}>
             <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
+                <div onClick={handleSetBook}>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
+                <div onClick={handleSetBook}>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
+                <div onClick={handleSetBook}>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
+                <div onClick={handleSetBook}>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
+                <div onClick={handleSetBook}>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
+                <div onClick={handleSetBook}>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
+                <div onClick={handleSetBook}>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
+                <div onClick={handleSetBook}>
+                <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
+                </div>
           </BooksCat>
-          <BooksCat isDarkTheme={isDarkTheme} cat='Just Landing Books'>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-          </BooksCat>
-          <BooksCat isDarkTheme={isDarkTheme} cat='Tech Books'>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-          </BooksCat>
-          <BooksCat isDarkTheme={isDarkTheme} cat='Fiction Books'>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-          </BooksCat>
-          <BooksCat isDarkTheme={isDarkTheme} cat='Health Books'>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-            <div onClick={handleSetBook}>
-            <Book isDarkTheme={isDarkTheme} image='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthebookcoverdesigner.com%2Fwp-content%2Fuploads%2F2018%2F06%2F324.jpg&f=1&nofb=1' title='title' author="Author's name" />
-            </div>
-          </BooksCat>
+          ))}
         </div>
         <div className='wrapper-fixed flex flex-col gap-4'>
           <div className={`cursor-pointer join-blog w-full border rounded-xl border-[#0b9d6c] py-5 px-3 flex items-center justify-between ${colorsClass}`}>
@@ -260,10 +149,10 @@ export default function Home({ isDarkTheme }) {
                               <p className='text-lg'>Released In: <span className='font-semibold'>{book.releaseDate}</span></p>
                           </div>
                           <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4'>
-                        <div className={`button-cta bg-[#3b3bff] duration-300 ease-out hover:bg-[#5959ff] active:bg-[#5959ff] rounded-lg`}>
+                        <div className={`button-cta duration-300 ease-out rounded-lg`}>
                               <button className='w-full text-gray-200 p-2 grid items-center justify-center'>Learn more</button>
                           </div>
-                        <div className={`button-cta bg-[#3b3bff] duration-300 ease-out hover:bg-[#5959ff] active:bg-[#5959ff] rounded-lg`}>
+                        <div className={`button-cta duration-300 ease-out rounded-lg`}>
                               <button className='w-full text-gray-200 p-2 grid items-center justify-center'>Buy Book</button>
                           </div>
                         </div>

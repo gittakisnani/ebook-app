@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
+import { useColorContext } from '../context/colorPaletteContext'
 import { AiFillStar, AiOutlineStar } from './Icons'
+
+
 const Book = ({ image, title, author, isDarkTheme, stared=false }) => {
-  const [colorClass, setColorClass] = useState(isDarkTheme ? 'bg-[#0c131b] text-gray-200' : 'bg-white text-slate-700')
+  const { currentColor } = useColorContext()
+  const colorClass = useState(isDarkTheme ? 'bg-[#0c131b] text-gray-200' : 'bg-white text-slate-700')[0]
   return (
     <div className={`w-full flex flex-col gap-1 ${colorClass} cursor-pointer`}>
         <div className='img-wrapper w-full max-h-[180px] flex-1 rounded-lg overflow-hidden'>
@@ -13,8 +17,8 @@ const Book = ({ image, title, author, isDarkTheme, stared=false }) => {
           <p className='font-light capitalize'>{author}</p>
           </div>
           <div className='stared text-3xl' title={stared ? 'Unstar Book' : 'Star book'}>
-            {stared && <AiFillStar color='#3b3bff' />}
-            {!stared && <AiOutlineStar color='#3b3bff' />}
+            {stared && <AiFillStar color={currentColor} />}
+            {!stared && <AiOutlineStar color={currentColor} />}
           </div>
         </div>
     </div>

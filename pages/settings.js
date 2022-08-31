@@ -4,24 +4,15 @@ import Light from '../public/Light.jpeg'
 import Dark from '../public/Dark.jpeg'
 import { AiOutlineCheck } from '../components/Icons'
 import Head from 'next/head'
-//It Should have:
-//-Language,
-//-Currency,
-//-Theme,
-//Palette,
-//Share with my friends //TODO:
-//Give us a feedback //TODO:
-//Maybe Contribute
+import colors from '../config/color'
+import { useColorContext } from '../context/colorPaletteContext'
 
 
-
-
-const colors = ['#dc2626', '#fbbf24', '#65a30d', '#16a34a', '#0891b2', '#4f46e5', '#c026d3', '#db2777', '#e11d48', '#000000', '#3b3bff'];
-const LANGUAGES = ['English US (Default)', 'Arabic', 'French', 'English UK', 'English AU', 'German', 'Spanish', 'Italian']
-const CURRENCIES = ['DZD', 'EUR', 'AUD', 'INR', 'BRL', 'USD', 'EGP', 'JPY', 'SAR', 'CHF', 'TRY']
-const Settings = ({ isDarkTheme, setIsDarkTheme, color, setColor }) => {
+const Settings = ({ isDarkTheme, setIsDarkTheme }) => {
     const [colorsClass, setColorsClass] = useState(isDarkTheme ? 'bg-[#0c131b]/95 text-gray-200' : 'bg-gray-100 text-slate-700');
-    const [selected, setSelected] = useState(color)
+    const { currentColor, setCurrentColor } = useColorContext();
+
+
     const handleTheme = (selector) => {
     const themes = document.querySelectorAll(selector);
     themes.forEach(theme => theme.addEventListener('click', () => {
@@ -30,8 +21,15 @@ const Settings = ({ isDarkTheme, setIsDarkTheme, color, setColor }) => {
     }))
     }
 
+    const handleChangeColor = (color) => {
+        setCurrentColor(color)
+        const root = document.documentElement;
+        root.style.setProperty('--main-color', color)
+    }
+
     useEffect(() => setColorsClass(isDarkTheme ? 'bg-[#0c131b]/95 text-gray-200' : 'bg-gray-100 text-slate-700'), [isDarkTheme]);
-    useEffect(() => setSelected(color), [color]);
+
+
   return (
     <>
         <Head>
@@ -62,7 +60,6 @@ const Settings = ({ isDarkTheme, setIsDarkTheme, color, setColor }) => {
                         </div>
                         <div>
                             <li 
-                            data-color={color}
                             onClick={() => {
                                 handleTheme('.theme');
                                 setIsDarkTheme(true)
@@ -90,11 +87,11 @@ const Settings = ({ isDarkTheme, setIsDarkTheme, color, setColor }) => {
                         {colors.map((color, index) => (
                             <li 
                             key={index}
-                            onClick={() => setColor(color)}
+                            onClick={() => handleChangeColor(color)}
                             style={{backgroundColor: color}} 
                             className='p-4 rounded-[50%] flex items-center justify-center group cursor-pointer'>
-                                {selected === color && <span className=' text-white text-xl font-semibold'><AiOutlineCheck /></span>}
-                                {selected !== color && <span className='opacity-0 duration-200 ease-out group-hover:opacity-100 text-white text-xl font-semibold'><AiOutlineCheck /></span>}
+                                {currentColor === color && <span className=' text-white text-xl font-semibold'><AiOutlineCheck /></span>}
+                                {currentColor !== color && <span className='opacity-0 duration-200 ease-out group-hover:opacity-100 text-white text-xl font-semibold'><AiOutlineCheck /></span>}
                             </li>
                         ))}
                     </ul>
@@ -107,20 +104,20 @@ const Settings = ({ isDarkTheme, setIsDarkTheme, color, setColor }) => {
                         {LANGUAGES.map((lang, index) => (
                             //We may add flags
                             <li 
-                            onClick={() => handleTheme('.lang')} key={index} className={`lang p-2 rounded-lg overflow-hidden flex items-center gap-3 border border-transparent w-[200px] cursor-pointer hover:border-[#3b3bff]`}>
+                            onClick={() => handleTheme('.lang')} key={index} className={`lang p-2 rounded-lg overflow-hidden flex items-center gap-3 border border-transparent w-[200px] cursor-pointer`}>
                                 <p className='text-lg'>{lang}</p>
                             </li>
                         ))}
                     </ul>
                 </div>
-                <div className='currency-wrapper'>
+                <div className='currency'>
                     <h3 className='text-xl '>Currency</h3>
                     <p className='desc-appearance text-gray-400 '>Select your Currency:</p>
 
                     <ul className='py-2 flex flex-wrap items-center gap-3 '>
                         {CURRENCIES.map((currency, index) => (
                             //We may add flags
-                            <li onClick={() => handleTheme('.currency')} key={index} className='currency p-2 rounded-lg overflow-hidden flex items-center gap-3 border border-transparent hover:border-[#3b3bff] w-[200px] cursor-pointer'>
+                            <li onClick={() => handleTheme('.currency')} key={index} className='currency p-2 rounded-lg overflow-hidden flex items-center gap-3 border border-transparent w-[200px] cursor-pointer'>
                                 <p className='text-lg'>{currency}</p>
                             </li>
                         ))}

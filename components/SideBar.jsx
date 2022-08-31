@@ -1,23 +1,34 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import  { useColorContext } from '../context/colorPaletteContext';
 import { AiOutlineMenu, MdOutlineSpaceDashboard, MdSpaceDashboard, FiTrendingUp, FiLogOut, AiFillStar, AiOutlineStar, BsPeople, BsPeopleFill, RiSettingsFill, RiSettingsLine  } from './Icons';
+
 const SideBar = ({ openedPage, isDarkTheme }) => {
     const decodedOpenedPage = decodeURI(openedPage)
     const [sideBar, setSideBar] = useState(false);
+    const [hoverClass, setHoverClass] = useState(isDarkTheme ? 'hover:bg-[#003049] text-gray-200' : 'hover:bg-[#eee] text-slate-700');
+    const { currentColor } = useColorContext() 
+
+
     const handleSideBar = () => setSideBar(!sideBar);
-    const [hoverClass, setHoverClass] = useState(isDarkTheme ? 'hover:bg-[#003049] text-gray-200' : 'hover:bg-[#eee] text-slate-700')
 
     const handleActivePage = () => {
-        const pages = document.querySelectorAll('li');
-        pages.forEach(page => page.classList.remove('active-page'))
+        const pages = document.querySelectorAll('aside li');
+        pages.forEach(page => {
+            page.classList.remove(`active-page`)
+        })
         if(decodedOpenedPage) {
-            pages.forEach(page => page.classList.contains(decodedOpenedPage) ? page.classList.add('active-page') : '')
+            pages.forEach(page => page.classList.contains(decodedOpenedPage) ? 
+            page.classList.add(`active-page`)
+            : '')
         } else {
-            pages.forEach(page => page.classList.contains('dashboard') ? page.classList.add('active-page') : '')
+            pages.forEach(page => page.classList.contains('dashboard') ? page.classList.add(`active-page`) : '')
         }
     }
+
     useEffect(() => setHoverClass(isDarkTheme ? 'hover:bg-[#003049] text-gray-200' : 'hover:bg-[#eee] text-slate-700'), [isDarkTheme])
-    useEffect(() => handleActivePage(), [decodedOpenedPage])
+
+    useEffect(() => handleActivePage(), [decodedOpenedPage, currentColor])
   return (
     <aside 
     className='p-4 flex flex-col duration-300 ease-in-out h-screen'

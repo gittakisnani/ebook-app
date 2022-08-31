@@ -119,7 +119,7 @@ const Header = ({ activePage, isDarkTheme }) => {
                     </div>
                     <div className='categories-filter flex flex-col gap-2 py-2 '>
                         Rate:
-                        <input ref={rateRef} step={1} min={1} max={5} type="range" className='outline-none accent-[#3b3bff]/90 hover:accent-[#3b3bff] cursor-pointer' />
+                        <input ref={rateRef} step={1} min={1} max={5} type="range" className='outline-none cursor-pointer' />
                     </div>
                     <div className='categories-filter flex flex-col gap-2'>
                         Price:
@@ -138,14 +138,14 @@ const Header = ({ activePage, isDarkTheme }) => {
                              className='border bg-inherit rounded-lg caret-[#3b3bff] border-[#3b3bff] outline-none p-2 max-w-[100px]' type="text" placeholder='Max' />
                         </div>
                     </div>
-                    <div className='my-2 flex items-center justify-end gap-2 w-full'>
+                    <div className='my-2 flex items-center justify-end gap-2 w-full buttons-wrapper'>
                         <button onClick={handleReset} type='reset' className='border-[#3b3bff] border text-[#3b3bff] text-center cursor-pointer px-4 py-2 rounded-lg duration-300 hover:text-inherit hover:bg-[#3b3bff]'>Reset</button>
                         <button onClick={handleFilters} type='reset' className='border-[#3b3bff] border text-[#3b3bff] text-center cursor-pointer px-4 py-2 rounded-lg duration-300 hover:text-inherit hover:bg-[#3b3bff]'>Apply</button>
                     </div>
                 </div>}
             </div>
             <div className='filters h-[40px] w-[40px]'>
-                <button onClick={handleFilters} className='flex items-center justify-center duration-300 ease-out bg-[#3b3bff]/90 hover:bg-[#3b3bff] text-white rounded-md h-full w-full'>
+                <button onClick={handleFilters} className='flex items-center justify-center duration-300 ease-out  text-white rounded-md h-full w-full'>
                     <GoSettings size={20} />
                 </button>
             </div>
