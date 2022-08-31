@@ -6,6 +6,8 @@ import { AiOutlineCheck } from '../components/Icons'
 import Head from 'next/head'
 import colors from '../config/color'
 import { useColorContext } from '../context/colorPaletteContext'
+import LANGUAGES from '../config/languages'
+import CURRENCIES from '../config/currencies'
 
 
 const Settings = ({ isDarkTheme, setIsDarkTheme }) => {
