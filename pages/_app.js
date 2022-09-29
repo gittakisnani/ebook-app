@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
      <ColorPaletteProvider>
-        <main className='w-screen overflow-x-hidden max-w-[1366px] h-screen'>
+        <main className='w-screen overflow-x-hidden h-screen'>
           <div className='flex w-full max-w-[1366px] h-full'>
             <SideBar openedPage={page} isDarkTheme={isDarkTheme} />
             <Component {...pageProps} isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme}  />

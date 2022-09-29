@@ -110,7 +110,7 @@ export default function Home({ isDarkTheme }) {
             ))} 
           </div>
         </div>
-        {author && <div className='author-wrapper  absolute inset-0 bg-black/60 z-20 p-10 ms:p-18'>
+        {author && <div className='author-wrapper fixed inset-0 bg-black/60 z-20 p-10 ms:p-18'>
                       <div className={`author-infos ${colorsClass} w-full h-full p-10 rounded-lg overflow-y-scroll relative content-wrapper`}>
                           <div className=''>
                               <img src={author?.image} alt={author?.name} />
@@ -138,7 +138,7 @@ export default function Home({ isDarkTheme }) {
                           </div>
                       </div>
         </div>}
-        {book && <div className='author-wrapper  absolute inset-0 bg-black/60 z-20 p-10 ms:p-18'>
+        {book && <div className='author-wrapper fixed inset-0 bg-black/60 z-20 p-10 ms:p-18'>
                       <div className={`author-infos ${colorsClass} w-full h-full p-10 rounded-lg overflow-y-scroll relative content-wrapper`}>
                           <div className=''>
                               <img src={book?.image} alt={book?.title} />
